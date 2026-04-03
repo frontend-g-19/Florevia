@@ -1,0 +1,30 @@
+Ranglar (premium palette)
+
+Deep Rose — #C2185B (asosiy rang)
+Soft Pink — #F8BBD0 (background)
+Gold Accent — #D4AF37 (premium effect)
+Dark Charcoal — #2B2B2B (text)
+
+💎 1. Deep Rose (#C2185B) — ASOSIY BRAND RANG
+
+Bu sening “signature” ranging — eng ko‘p ko‘rinadigan joylarda ishlatiladi.
+
+Qayerda ishlatiladi:
+🔘 Primary button
+(Buy now, Add to cart, Order)
+🔗 Linklar (hover holatda)
+❤️ Iconlar (like, heart, favorite)
+🏷️ Badge / label (NEW, SALE)
+🧭 Navbar active element
+
+✨ 2. Gold (#D4AF37) — PREMIUM EFFECT
+
+Bu rangni ko‘p ishlatish mumkin emas ❗
+Aks holda arzon ko‘rinib qoladi
+
+Qayerda ishlatiladi:
+👑 Logo ichida (accent sifatida)
+⭐ Rating yulduzlari
+💎 Premium label (VIP, Exclusive)
+🖋️ Heading ichida kichik accent (masalan, underline yoki icon)
+🎁 Maxsus kartochkalar (luxury product)
