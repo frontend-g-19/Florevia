@@ -182,3 +182,15 @@ const flowers = [
     liked: false,
   },
 ];
+
+const menuBtn = document.querySelector(".menu-toggle");
+const sidebar = document.querySelector(".sidebar");
+const closeBtn = document.querySelector(".close-btn");
+
+menuBtn.onclick = () => {
+  sidebar.classList.add("active");
+};
+
+closeBtn.onclick = () => {
+  sidebar.classList.remove("active");
+};
