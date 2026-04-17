@@ -97,58 +97,157 @@
 
     <!-- ABOUT -->
     <section class="container about">
-      <div class="about-left">
-        <img src="img/hero-flower.webp" />
-      </div>
-      <div class="about-right">
-        <h2>About Us</h2>
-        <p>
-          Florévia — bu nafaqat gullar do‘koni, balki his-tuyg‘ularni
-          yetkazuvchi brend. Biz sizga eng sifatli va nafis gullarni taklif
-          qilamiz.
-        </p>
+      <div class="about-card">
+        <div class="about-left">
+          <img src="img/hero-flower.webp" alt="About Florévia" />
+        </div>
+
+        <div class="about-right">
+          <span class="about-badge">Our Story</span>
+          <h2>About Florévia</h2>
+
+          <p>
+            Florévia — bu nafaqat gullar do‘koni, balki his-tuyg‘ularni
+            yetkazuvchi brend. Biz sizga eng sifatli, nafis va zamonaviy
+            gullarni taklif qilamiz.
+          </p>
+
+          <p>
+            Har bir guldasta biz uchun san’at asari. Sevgi, bayram va muhim
+            lahzalarni yanada esda qolarli qilamiz.
+          </p>
+
+          <div class="about-stats">
+            <div class="stat">
+              <h3>5+</h3>
+              <p>Yil tajriba</p>
+            </div>
+            <div class="stat">
+              <h3>10k+</h3>
+              <p>Mamnun mijoz</p>
+            </div>
+            <div class="stat">
+              <h3>100%</h3>
+              <p>Tabiiy gullar</p>
+            </div>
+          </div>
+
+          <button class="about-btn">Learn More</button>
+        </div>
       </div>
     </section>
 
     <!-- BLOG -->
     <section class="container blog">
-      <h2>Latest Blogs</h2>
+      <div class="section-header">
+        <h2>Latest Blogs</h2>
+        <p>Gullar, romantika va trendlar haqida eng so‘nggi maqolalar</p>
+      </div>
 
       <div class="blog-grid">
         <div class="blog-card">
+          <span class="blog-tag">Care Tips</span>
           <h3>Gullarni parvarish qilish</h3>
-          <p>Uyda gullarni qanday uzoq saqlash mumkin?</p>
+          <p>
+            Uyda gullarni qanday uzoq saqlash mumkin va ularni so‘litmaslik
+            yo‘llari.
+          </p>
+          <a href="#">Read more →</a>
         </div>
 
         <div class="blog-card">
+          <span class="blog-tag">Romance</span>
           <h3>Romantik buketlar</h3>
-          <p>Sevgan inson uchun ideal tanlov</p>
+          <p>Sevgan inson uchun ideal guldasta tanlash bo‘yicha maslahatlar.</p>
+          <a href="#">Read more →</a>
         </div>
 
         <div class="blog-card">
+          <span class="blog-tag">Trends</span>
           <h3>Trend gullar</h3>
-          <p>2026 yil trend gullari</p>
+          <p>2026 yilning eng mashhur va zamonaviy gullari ro‘yxati.</p>
+          <a href="#">Read more →</a>
         </div>
       </div>
     </section>
 
     <!-- CONTACT -->
     <section class="container contact">
-      <h2>Contact Us</h2>
+      <div class="contact-header">
+        <h2>Contact Us</h2>
+        <p>Savollaringiz bo‘lsa bizga yozing, tez orada javob beramiz</p>
+      </div>
 
-      <form>
-        <input type="text" placeholder="Your name" />
-        <input type="email" placeholder="Your email" />
-        <textarea placeholder="Message"></textarea>
-        <button type="submit">Send</button>
-      </form>
+      <div class="contact-wrapper">
+        <!-- LEFT INFO -->
+        <div class="contact-info">
+          <h3>Florévia Studio</h3>
+          <p>
+            Biz sizning maxsus lahzalaringiz uchun eng chiroyli gullarni
+            yaratamiz.
+          </p>
+
+          <div class="info-box">
+            <span>📍</span>
+            <p>Tashkent, Uzbekistan</p>
+          </div>
+
+          <div class="info-box">
+            <span>📞</span>
+            <p>+998 90 123 45 67</p>
+          </div>
+
+          <div class="info-box">
+            <span>✉️</span>
+            <p>hello@florevia.uz</p>
+          </div>
+        </div>
+
+        <!-- RIGHT FORM -->
+        <form class="contact-form">
+          <input type="text" placeholder="Your name" />
+          <input type="email" placeholder="Your email" />
+          <textarea placeholder="Your message"></textarea>
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
     </section>
 
     <!-- FOOTER -->
-    <footer>
-      <div class="container footer">
-        <h2>Florévia</h2>
-        <p>© 2026 All rights reserved</p>
+    <footer class="footer">
+      <div class="container footer-wrapper">
+        <div class="footer-brand">
+          <h2>Florévia</h2>
+          <p>Sevgi va hissiyotlarni gullar orqali yetkazamiz 🌸</p>
+        </div>
+
+        <div class="footer-links">
+          <h3>Quick Links</h3>
+          <a href="#">Home</a>
+          <a href="#">Products</a>
+          <a href="#">About</a>
+          <a href="#">Contact</a>
+        </div>
+
+        <div class="footer-contact">
+          <h3>Contact</h3>
+          <p>📍 Tashkent, Uzbekistan</p>
+          <p>📞 +998 90 123 45 67</p>
+          <p>✉️ hello@florevia.uz</p>
+        </div>
+
+        <div class="footer-social">
+          <h3>Follow Us</h3>
+          <div class="social-icons">
+            <a href="#">Instagram</a>
+            <a href="#">Telegram</a>
+            <a href="#">Facebook</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 Florévia. All rights reserved.</p>
       </div>
     </footer>
   </body>
