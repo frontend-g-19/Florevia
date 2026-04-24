@@ -4,7 +4,7 @@
   box-sizing: border-box;
   list-style: none;
   text-decoration: none;
-  font-family: "Montserrat Alternates", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
@@ -90,11 +90,15 @@ nav {
 .nav-actions button {
   background: linear-gradient(45deg, #c2185b, #d81b60);
   border: none;
-  color: white;
   padding: 8px;
   border-radius: 50%;
   cursor: pointer;
   transition: 0.3s;
+}
+
+.nav-actions button i {
+  color: white;
+  font-size: 18px;
 }
 
 .nav-actions button:hover {
@@ -369,6 +373,145 @@ nav {
 
 .about-btn:hover {
   transform: translateY(-3px);
+}
+
+.products-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.filters {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 20px;
+  background: #eee;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  background: linear-gradient(45deg, #c2185b, #d81b60);
+  color: white;
+}
+
+/* PREMIUM CARD */
+.product-grid .card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  transition: 0.35s ease;
+}
+
+.product-grid .card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(194, 24, 91, 0.2), transparent 70%);
+  opacity: 0;
+  transition: 0.4s;
+}
+
+.product-grid .card:hover::before {
+  opacity: 1;
+}
+
+.product-grid .card:hover {
+  transform: translateY(-10px) scale(1.02);
+}
+
+.product-grid .card img {
+  height: 180px;
+  object-fit: contain;
+}
+
+.product-grid .card h3 {
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.product-grid .card p {
+  color: #c2185b;
+  font-weight: bold;
+}
+
+/* BADGE */
+.product-grid .badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: linear-gradient(45deg, #c2185b, #d81b60);
+  color: white;
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+/* LIKE BUTTON */
+.product-grid .like-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: white;
+  border-radius: 50%;
+  padding: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 18px;
+}
+
+.product-grid .like-btn i {
+  color: #999;
+  transition: 0.3s;
+}
+
+.product-grid .like-btn.active i {
+  color: #e91e63;
+  transform: scale(1.2);
+}
+
+.product-grid .cart-btn {
+  margin-top: 10px;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  background: linear-gradient(45deg, #c2185b, #ad1457);
+  color: white;
+  cursor: pointer;
+
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.product-grid .cart-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(194, 24, 91, 0.3);
+}
+
+.product-grid .cart-btn i {
+  font-size: 16px;
 }
 
 /* BLOG */

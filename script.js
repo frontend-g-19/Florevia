@@ -1,3 +1,4 @@
+// ================== DATA ==================
 const flowers = [
   {
     id: 1,
@@ -10,7 +11,6 @@ const flowers = [
     count: 120,
     colors: ["qizil"],
     image: "/img/qizil-atirgul.png",
-    liked: false,
   },
   {
     id: 2,
@@ -22,7 +22,6 @@ const flowers = [
     count: 85,
     colors: ["oq"],
     image: "/img/oq-liliya.jpg",
-    liked: false,
   },
   {
     id: 3,
@@ -34,7 +33,6 @@ const flowers = [
     count: 60,
     colors: ["pushti"],
     image: "/img/pushti-pion.jpg",
-    liked: false,
   },
   {
     id: 4,
@@ -47,7 +45,6 @@ const flowers = [
     count: 140,
     colors: ["qizil", "sariq", "pushti"],
     image: "/img/bahor.png",
-    liked: false,
   },
   {
     id: 5,
@@ -59,7 +56,6 @@ const flowers = [
     count: 95,
     colors: ["sariq"],
     image: "/img/sariq-lola.webp",
-    liked: false,
   },
   {
     id: 6,
@@ -71,7 +67,6 @@ const flowers = [
     count: 40,
     colors: ["oq", "pushti"],
     image: "/img/orhideya-miks.jpg",
-    liked: false,
   },
   {
     id: 7,
@@ -83,7 +78,6 @@ const flowers = [
     count: 70,
     colors: ["moviy"],
     image: "/img/moviy.png",
-    liked: false,
   },
   {
     id: 8,
@@ -95,7 +89,6 @@ const flowers = [
     count: 110,
     colors: ["oq"],
     image: "/img/oq-atirgul.jpg",
-    liked: false,
   },
   {
     id: 9,
@@ -107,7 +100,6 @@ const flowers = [
     count: 90,
     colors: ["qizil", "oq"],
     image: "/img/oq-qizil.webp",
-    liked: false,
   },
   {
     id: 10,
@@ -119,7 +111,6 @@ const flowers = [
     count: 75,
     colors: ["binafsha"],
     image: "/img/lavanda.jpg",
-    liked: false,
   },
   {
     id: 11,
@@ -131,7 +122,6 @@ const flowers = [
     count: 100,
     colors: ["qizil"],
     image: "/img/qizil-lola.webp",
-    liked: false,
   },
   {
     id: 12,
@@ -143,7 +133,6 @@ const flowers = [
     count: 130,
     colors: ["sariq", "oq"],
     image: "/img/mix-gul.webp",
-    liked: false,
   },
   {
     id: 13,
@@ -155,7 +144,6 @@ const flowers = [
     count: 105,
     colors: ["pushti"],
     image: "/img/pushti-atirgul.jpg",
-    liked: false,
   },
   {
     id: 14,
@@ -167,7 +155,6 @@ const flowers = [
     count: 35,
     colors: ["qizil", "yashil", "sariq"],
     image: "/img/ekzotik.webp",
-    liked: false,
   },
   {
     id: 15,
@@ -179,18 +166,116 @@ const flowers = [
     count: 150,
     colors: ["pushti", "oq"],
     image: "/img/mini.jpeg",
-    liked: false,
   },
 ];
 
+// ================== ELEMENTS ==================
 const menuBtn = document.querySelector(".menu-toggle");
 const sidebar = document.querySelector(".sidebar");
 const closeBtn = document.querySelector(".close-btn");
+const productGrid = document.getElementById("productGrid");
 
-menuBtn.onclick = () => {
-  sidebar.classList.add("active");
-};
+const filterBtns = document.querySelectorAll(".filter-btn");
 
-closeBtn.onclick = () => {
-  sidebar.classList.remove("active");
-};
+let currentCategory = "All";
+
+// ================== SIDEBAR ==================
+menuBtn.onclick = () => sidebar.classList.add("active");
+closeBtn.onclick = () => sidebar.classList.remove("active");
+
+// ================== LOCAL STORAGE ==================
+const STORAGE_KEY = "favoriteFlowers";
+
+function getFavorites() {
+  return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+}
+
+function saveFavorites(data) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+}
+
+function toggleFavorite(flower) {
+  let favorites = getFavorites();
+  const exists = favorites.find((f) => f.id === flower.id);
+
+  if (exists) {
+    favorites = favorites.filter((f) => f.id !== flower.id);
+  } else {
+    favorites.push(flower);
+  }
+
+  saveFavorites(favorites);
+}
+
+function isLiked(id) {
+  return getFavorites().some((f) => f.id === id);
+}
+
+// ================== RENDER ==================
+function renderProducts(data) {
+  productGrid.innerHTML = "";
+
+  data.forEach((flower) => {
+    const liked = isLiked(flower.id);
+
+    const card = document.createElement("div");
+    card.className = "card";
+
+    card.innerHTML = `
+      <span class="badge">${flower.category}</span>
+
+      <div class="like-btn ${liked ? "active" : ""}">
+        <i class="ph ${liked ? "ph-fill ph-heart " : "ph-heart"}"></i>
+      </div>
+
+      <img src="${flower.image}" />
+      <h3>${flower.name}</h3>
+      <p>${flower.price.toLocaleString()} so'm</p>
+
+      <button class="cart-btn">
+        <i class="ph ph-shopping-cart"></i>
+        Add to Cart
+      </button>
+    `;
+
+    const likeBtn = card.querySelector(".like-btn");
+    const icon = likeBtn.querySelector("i");
+    const cartBtn = card.querySelector(".cart-btn");
+
+    // ❤️ LIKE
+    likeBtn.onclick = () => {
+      toggleFavorite(flower);
+      const nowLiked = isLiked(flower.id);
+
+      icon.className = `ph ${nowLiked ? "ph-heart-fill" : "ph-heart"}`;
+      likeBtn.classList.toggle("active");
+    };
+
+    // 🛒 CART
+    cartBtn.onclick = () => {
+      alert(`${flower.name} savatchaga qo‘shildi 🛒`);
+    };
+
+    productGrid.appendChild(card);
+  });
+}
+
+// ================== FILTER ==================
+filterBtns.forEach((btn) => {
+  btn.onclick = () => {
+    document.querySelector(".filter-btn.active").classList.remove("active");
+    btn.classList.add("active");
+
+    currentCategory = btn.dataset.category;
+
+    const filtered =
+      currentCategory === "All"
+        ? flowers
+        : flowers.filter((f) => f.category === currentCategory);
+
+    renderProducts(filtered);
+  };
+});
+
+// ================== INIT ==================
+renderProducts(flowers);
