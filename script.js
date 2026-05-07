@@ -173,7 +173,7 @@ const flowers = [
 const menuBtn = document.querySelector(".menu-toggle");
 const sidebar = document.querySelector(".sidebar");
 const closeBtn = document.querySelector(".close-btn");
-const productGrid = document.getElementById("productGrid");
+const productGrid = document.querySelector("#productGrid");
 
 const filterBtns = document.querySelectorAll(".filter-btn");
 
