@@ -56,48 +56,9 @@
     </section>
 
     <!-- CART WRAPPER -->
-    <section class="container cart-wrapper">
+    <section class="container cart-wrapper" id="cartWrapper">
       <!-- LEFT -->
-      <div class="cart-items">
-        <!-- ITEM -->
-        <div class="cart-item">
-          <img src="img/qizil-atirgul.png" />
-
-          <div class="item-info">
-            <h3>Qizil Atirgul</h3>
-            <p>150 000 so'm</p>
-
-            <div class="quantity">
-              <button>-</button>
-              <span>1</span>
-              <button>+</button>
-            </div>
-          </div>
-
-          <button class="remove">
-            <i class="ph ph-trash"></i>
-          </button>
-        </div>
-
-        <div class="cart-item">
-          <img src="img/lavanda.jpg" />
-
-          <div class="item-info">
-            <h3>Lavanda</h3>
-            <p>200 000 so'm</p>
-
-            <div class="quantity">
-              <button>-</button>
-              <span>2</span>
-              <button>+</button>
-            </div>
-          </div>
-
-          <button class="remove">
-            <i class="ph ph-trash"></i>
-          </button>
-        </div>
-      </div>
+      <div class="cart-items" id="cartItems"></div>
 
       <!-- RIGHT SUMMARY -->
       <div class="cart-summary">
@@ -105,17 +66,17 @@
 
         <div class="summary-row">
           <span>Subtotal</span>
-          <span>350 000 so'm</span>
+          <span id="subtotalText">0 so'm</span>
         </div>
 
         <div class="summary-row">
           <span>Delivery</span>
-          <span>20 000 so'm</span>
+          <span id="deliveryText">20 000 so'm</span>
         </div>
 
         <div class="summary-row total">
           <span>Total</span>
-          <span>370 000 so'm</span>
+          <span id="totalText">0 so'm</span>
         </div>
 
         <button class="checkout-btn">Checkout</button>
@@ -123,11 +84,14 @@
     </section>
 
     <!-- EMPTY -->
-    <section class="container empty hidden">
+    <section class="container empty hidden" id="emptyCartState">
       <i class="ph ph-shopping-cart-simple"></i>
       <h3>Savatcha bo‘sh</h3>
       <p>Hozircha hech nima qo‘shilmadi</p>
       <button onclick="location.href = 'index.html'">Shop Now</button>
     </section>
+
+    <div id="toast" class="toast hidden"></div>
   </body>
+  <script src="cart.js"></script>
 </html>

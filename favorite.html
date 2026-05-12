@@ -58,38 +58,7 @@
 
     <!-- FAVORITE GRID -->
     <section class="container favorites">
-      <div class="fav-grid" id="favContainer">
-        <!-- CARD -->
-        <div class="fav-card">
-          <img src="img/qizil-atirgul.png" />
-          <h3>Qizil Atirgul</h3>
-          <p>150 000 so'm</p>
-
-          <div class="fav-actions">
-            <button class="remove-btn">
-              <i class="ph ph-trash"></i>
-            </button>
-            <button class="cart-btn">
-              <i class="ph ph-shopping-cart"></i>
-            </button>
-          </div>
-        </div>
-
-        <div class="fav-card">
-          <img src="img/lavanda.jpg" />
-          <h3>Lavanda</h3>
-          <p>200 000 so'm</p>
-
-          <div class="fav-actions">
-            <button class="remove-btn">
-              <i class="ph ph-trash"></i>
-            </button>
-            <button class="cart-btn">
-              <i class="ph ph-shopping-cart"></i>
-            </button>
-          </div>
-        </div>
-      </div>
+      <div class="fav-grid" id="favContainer"></div>
     </section>
 
     <!-- EMPTY STATE -->
@@ -99,6 +68,9 @@
       <p>Hozircha hech qanday mahsulot qo‘shilmagan</p>
       <button onclick="location.href = 'index.html'">Shop Now</button>
     </section>
+
+    <div id="toast" class="toast hidden"></div>
   </body>
+  <script src="cart.js"></script>
   <script src="favorite.js"></script>
 </html>
