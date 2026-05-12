@@ -1,4 +1,5 @@
 // ================== DATA ==================
+// 🌸 Mahsulotlar ro‘yxati
 const flowers = [
   {
     id: 1,
@@ -169,67 +170,117 @@ const flowers = [
   },
 ];
 
-// ================== ELEMENTS ==================
+// ================== ELEMENTLAR ==================
+
+// 🍔 Menu tugmasi
 const menuBtn = document.querySelector(".menu-toggle");
+
+// 📂 Sidebar elementi
 const sidebar = document.querySelector(".sidebar");
+
+// ❌ Sidebar yopish tugmasi
 const closeBtn = document.querySelector(".close-btn");
+
+// 🛍 Mahsulotlar chiqadigan container
 const productGrid = document.querySelector("#productGrid");
 
+// 🎯 Filter tugmalari
 const filterBtns = document.querySelectorAll(".filter-btn");
 
+// 📌 Hozirgi tanlangan kategoriya
 let currentCategory = "All";
 
 // ================== SIDEBAR ==================
-menuBtn.onclick = () => sidebar.classList.add("active");
-closeBtn.onclick = () => sidebar.classList.remove("active");
+
+// 📂 Sidebarni ochish
+menuBtn.onclick = () => {
+  sidebar.classList.add("active");
+};
+
+// ❌ Sidebarni yopish
+closeBtn.onclick = () => {
+  sidebar.classList.remove("active");
+};
 
 // ================== LOCAL STORAGE ==================
+
+// ❤️ Favorite mahsulotlar uchun localStorage kaliti
 const STORAGE_KEY = "favoriteFlowers";
 
+// 📥 LocalStorage ichidan favorite mahsulotlarni olish
 function getFavorites() {
   return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
 }
 
+// 💾 Favorite mahsulotlarni saqlash
 function saveFavorites(data) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
 }
 
+// ❤️ Favorite holatini o‘zgartirish
 function toggleFavorite(flower) {
   let favorites = getFavorites();
+
+  // Mahsulot oldin like qilinganmi tekshiramiz
   const exists = favorites.find((f) => f.id === flower.id);
 
   if (exists) {
+    // ❌ Agar mavjud bo‘lsa olib tashlaymiz
     favorites = favorites.filter((f) => f.id !== flower.id);
   } else {
+    // ✅ Aks holda qo‘shamiz
     favorites.push(flower);
   }
 
+  // 💾 Yangilangan ma’lumotni saqlaymiz
   saveFavorites(favorites);
 }
 
+// 🔍 Mahsulot like qilinganmi tekshiradi
 function isLiked(id) {
   return getFavorites().some((f) => f.id === id);
 }
 
+// ================== CART ==================
+
+// 🛒 Savatchaga mahsulot qo‘shish
+function addToCart(flower) {
+  alert(`${flower.name} savatchaga qo‘shildi 🛒`);
+}
+
 // ================== RENDER ==================
+
+// 🖼 Mahsulotlarni ekranga chiqarish funksiyasi
 function renderProducts(data) {
+  // Eski cardlarni tozalash
   productGrid.innerHTML = "";
 
+  // Har bir mahsulot uchun card yaratamiz
   data.forEach((flower) => {
+    // ❤️ Like holatini tekshiramiz
     const liked = isLiked(flower.id);
 
+    // 📦 Card yaratish
     const card = document.createElement("div");
+
+    // Card class qo‘shish
     card.className = "card";
 
+    // ❤️ Icon class tanlash
+    const iconClass = liked ? "ph ph-heart-fill" : "ph ph-heart";
+
+    // 📄 Card HTML
     card.innerHTML = `
       <span class="badge">${flower.category}</span>
 
       <div class="like-btn ${liked ? "active" : ""}">
-        <i class="ph ${liked ? "ph-fill ph-heart " : "ph-heart"}"></i>
+        <i class="${iconClass}"></i>
       </div>
 
-      <img src="${flower.image}" />
+      <img src="${flower.image}" alt="${flower.name}" />
+
       <h3>${flower.name}</h3>
+
       <p>${flower.price.toLocaleString()} so'm</p>
 
       <button class="cart-btn">
@@ -238,44 +289,68 @@ function renderProducts(data) {
       </button>
     `;
 
+    // ❤️ Like tugmasi
     const likeBtn = card.querySelector(".like-btn");
+
+    // ❤️ Icon elementi
     const icon = likeBtn.querySelector("i");
+
+    // 🛒 Cart tugmasi
     const cartBtn = card.querySelector(".cart-btn");
 
-    // ❤️ LIKE
+    // ================== LIKE ==================
+
     likeBtn.onclick = () => {
+      // ❤️ Favorite holatini o‘zgartiramiz
       toggleFavorite(flower);
+
+      // 🔄 Yangilangan holatni olamiz
       const nowLiked = isLiked(flower.id);
 
-      icon.className = `ph ${nowLiked ? "ph-heart-fill" : "ph-heart"}`;
-      likeBtn.classList.toggle("active");
+      // ❤️ Icon almashtirish
+      icon.className = nowLiked ? "ph ph-heart-fill" : "ph ph-heart";
+
+      // 🎨 Active class qo‘shish yoki olib tashlash
+      likeBtn.classList.toggle("active", nowLiked);
     };
 
-    // 🛒 CART
+    // ================== CART ==================
+
     cartBtn.onclick = () => {
-      alert(`${flower.name} savatchaga qo‘shildi 🛒`);
+      addToCart(flower);
     };
 
+    // 📥 Cardni productGrid ichiga joylash
     productGrid.appendChild(card);
   });
 }
 
 // ================== FILTER ==================
+
+// 🎯 Filter tugmalariga event qo‘shish
 filterBtns.forEach((btn) => {
   btn.onclick = () => {
+    // ❌ Oldingi active classni olib tashlash
     document.querySelector(".filter-btn.active").classList.remove("active");
+
+    // ✅ Yangi tugmaga active class qo‘shish
     btn.classList.add("active");
 
+    // 📌 Tanlangan kategoriyani olish
     currentCategory = btn.dataset.category;
 
+    // 🔍 Filter qilish
     const filtered =
       currentCategory === "All"
         ? flowers
         : flowers.filter((f) => f.category === currentCategory);
 
+    // 🖼 Filterlangan mahsulotlarni chiqarish
     renderProducts(filtered);
   };
 });
 
 // ================== INIT ==================
+
+// 🚀 Sahifa ochilganda barcha mahsulotlarni chiqarish
 renderProducts(flowers);
