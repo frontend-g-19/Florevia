@@ -35,17 +35,11 @@ function removeFavorite(id) {
 
 // ================== CART ==================
 
-// 🛒 Savatchaga mahsulot qo‘shish
-function addToCart(flower) {
-  alert(`${flower.name} savatchaga qo‘shildi 🛒`);
-}
+// 🛒 Savatchaga mahsulot qo‘shish (cart.js dan keladi)
 
 // ================== TOAST ==================
 
-// 🔔 Kichik notification chiqarish
-function showToast(message) {
-  alert(message);
-}
+// 🔔 Kichik notification chiqarish (cart.js dan keladi)
 
 // ================== RENDER FAVORITES ==================
 
