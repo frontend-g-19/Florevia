@@ -243,10 +243,7 @@ function isLiked(id) {
 
 // ================== CART ==================
 
-// 🛒 Savatchaga mahsulot qo‘shish
-function addToCart(flower) {
-  alert(`${flower.name} savatchaga qo‘shildi 🛒`);
-}
+// 🛒 Savatchaga mahsulot qo‘shish (cart.js dan keladi)
 
 // ================== RENDER ==================
 
